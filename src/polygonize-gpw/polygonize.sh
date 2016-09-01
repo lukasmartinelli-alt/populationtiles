@@ -18,3 +18,5 @@ function main() {
         break
     done
 }
+
+# tippecanoe -o population.mbtiles --force -Z 0 -z 8 -B 8 -ap data/population.geojson

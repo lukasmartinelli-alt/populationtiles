@@ -1,0 +1,12 @@
+mapbox-studio:
+  image: "osm2vectortiles/mapbox-studio"
+  ports:
+   - "3000:3000"
+  volumes:
+   - ./data:/data
+   - ./src/vector-datasource:/projects/vector-datasource.tm2source
+export-vectortiles:
+  image: "naturalearthtiles/export-vectortiles"
+  volumes:
+   - ./data:/data
+   - ./src/vector-datasource:/tm2source

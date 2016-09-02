@@ -3,13 +3,13 @@ MAINTAINER Lukas Martinelli <me@lukasmartinelli.ch>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       gdal-bin \
+      python-gdal \
       wget \
  && rm -rf /var/lib/apt/lists/*
 
-VOLUME /in /out
-ENV TIFF_INPUT=/in SHP_OUTPUT=/out
-
+VOLUME /import
+ENV IMPORT_DATA_DIR=/import
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-CMD ["polygonize.sh"]
+CMD ["./import-gwp.sh"]

@@ -29,10 +29,13 @@ Start up the PostgreSQL database with the PostGIS extension.
 docker-compose up -d postgres
 ```
 
-Now import the Natural Earth data set (can take several minutes).
+Now download the `GeoTIFF` from the [GPW v4 datasets](http://sedac.ciesin.columbia.edu/data/collection/gpw-v4/sets/browse)
+and put the unpacked `ZIP` file into the `./data` folder.
+
+Run the import script which will polygonize and import the GWP data into PostGIS.
 
 ```bash
-docker-compose run import-naturalearth
+docker-compose run import-gwp
 ```
 
 Import the required database schema (views, prepared tables and helper functions).
@@ -42,7 +45,7 @@ docker-compose run db-schema
 ```
 
 Export the vector tiles for the planet (can take up to 15min).
-The exported vector tiles are stored in `data/natural_earth.mbtiles`.
+The exported vector tiles are stored in `data/gpw.mbtiles`.
 
 ```bash
 docker-compose run export-vectortiles
